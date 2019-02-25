@@ -18,12 +18,13 @@ xmlValue = '''
 print(type('asdf'))
 def mutate_xml_string(xml_string, local_name, new_text_value):
     '''
-    will replace the first text node to have the value given by the given text
-    value for each element with the given local name in the given string
+    will replace the text of the first text node to have the value given by
+    the given text value for each element with the given local name in the
+    given string
     :param xml_string: the xml of type <class 'str'>
-    :param local_name: find all instances of the tag
-    :param new_text_value: replace text of first instance of a text node with this value
-    :return: the mutated xml
+    :param local_name: the tag that will have its text replaced
+    :param new_text_value: new text under the tag
+    :return: the xml with the text replaced
     '''
     tree = dom.parseString(xml_string)
 
@@ -34,7 +35,7 @@ def mutate_xml_string(xml_string, local_name, new_text_value):
 
     # reach through to documentElement to get rid of xml version tag
     return tree.documentElement.toxml()
-
+print(help(mutate_xml_string))
 print(mutate_xml_string(xmlValue, 'orderSource', 'recurring'))
 # tree = dom.parseString(xmlValue)
 # # tree = dom.parse("data.xml")
